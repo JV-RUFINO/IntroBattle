@@ -1,0 +1,119 @@
+!TUTORIAL!
+
+MENU_SINGLE(nome = ",dim = [100,100]
+		pos = [50,50] , tema = themes.Theme_Defaut)
+	
+	-> cria um objeto Menu que pode ser ativado quando usado duas funções:
+		=> MENU_SINGLE.draw(display.set_mode() do pygame)
+		=> MENU_SINGLE.update(event.get() do pygame)
+	-> em geral, todas as propriedades básicas estão disponiveis como vari-
+		-aveis, mudando o comportamento do Menu em tempo real quando
+		modficadas.
+	-> para adcionar uma função ao menu,basta , literalmente, adicionar ele-
+		mentos, como mostra abaixo:
+		=> MENU_SINGLE + ["isto é uma frase"]
+		é possivel criar 4 "elementos" assim:
+		=>	'isto é uma frase' - frase
+        		('isto é um botão',função) - botão
+        		'isto/é/uma/imagem' - imagem
+        		('isto é um seletor',("um","dois","tres"),função) -seletor simples
+        		('isto é um seletor',(("um",...),("dois",...),("tres",...)),função) -seletor complexo
+		
+		=> OBS: é possivel importar também a classe de Elementos diretamente.
+			é assim que, por trás dos panos, é identificado os "elementos"
+		
+			==> from enumerador import Elementos
+		
+			
+
+	EX:
+		from pygame import init,display,event,QUIT
+		from Menuzão import Menu_Single
+		from Menuzão.enumerador import Elementos
+
+		init()
+
+		surface = set_mode((500,500))		
+
+		M = MENU_SINGLE("Bem_vindo",pos = [60,50])
+		
+		M.nome = "Mau_vindo"
+
+		M + [(Elemento.FRASE,'isto é uma frase'),
+			('isto é um botão',função)]
+
+		Game = True
+    		while Game:
+        		evento_total = event.get()
+        		for ev in evento_total:
+				for ev in evento_total:
+            				if ev.type == QUIT: # habilitando o botão de "X" da tela
+                				Game = False
+                				break
+
+            			M.draw(surface)
+				M.update(evento_total)
+                        
+            			display.update()
+
+	
+MENU_CONJUNTO(display.set_mode() do pygame)
+	
+	-> de certa forma, acaba sendo uma extensão do MENU_SINGLE, pois tem 
+		comportamentos similares,mas possui diferenças:
+		=> primeiramente, após a sua definição, o MENU_CONJUNTO pode
+			chamar MENU_SINGLEs sem precisar de chamar diretamen-
+			-te, a partir de:
+			==> MENU_CONJUNTO.receber_menu
+			este,por sua vez, só precisa receber um dicionário 
+			com a seguinte sintaxe:
+			==> MENU_CONJUNTO.receber_menu(
+				{"nome": "",
+				 "dim": [50,50],
+				 "posição": [50,50],
+				 "e": []}
+			as chaves aceitam versões maiusculas e minusculas,
+			versões em portugues e ingles, fora as abreviações e
+			até o uso da primeira letra em PT-BR.
+
+	EX:
+		from pygame import init,display,event,QUIT
+		from Menuzão import Menu_Conjunto
+		
+		init()
+
+		surface = set_mode((500,500))
+
+		MMM = Menu_Conjunto(surface)
+
+		MMM.novo_menu ( {
+                "nome"      : 'Bem vindo',
+                "dimensao"  : (80,60), 
+                "posiçao"   : 50,
+                "cor"       : "v",
+                "elements"  : [
+                    (Elemento.SELETOR,("titulo:\t",   
+                    (('Médio', (50, 50, 200)),
+                    ('Dificil', (200, 50, 50)),
+                    ('Facil', (50, 200, 50)))
+                    ,mudar_cor_do_fundo)),
+                    (["Icones",'Representadores','ATAQUE','baixa'])
+                    ]})
+		
+		MMM.novo_menu({"cor":"Outro_menu"}) # sim, é possivel abster chaves
+		MMM.nome = "Sim,é um outro menu" # sim, ele funciona como um Menu_Single
+		MMM[0] # com essa sintaxe é possivel trocar de Menus. Agora o Menu em foco é o 1° 
+		
+		Game = True
+    		while Game:
+        		evento_total = event.get()
+        		for ev in evento_total:
+				for ev in evento_total:
+            				if ev.type == QUIT: # habilitando o botão de "X" da tela
+                				Game = False
+                				break
+            			
+					MMM.performar(evento_total)
+                        
+            			display.update()
+	

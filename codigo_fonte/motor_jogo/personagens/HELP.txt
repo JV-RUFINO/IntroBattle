@@ -1,0 +1,10 @@
+=== ALIADOS ===
+Caçadora 
+Ladino   
+Paladino 
+Maga	 
+Suporte  
+
+=== INIMIGOS ===
+Esqueleto   
+Lady_Medusa 

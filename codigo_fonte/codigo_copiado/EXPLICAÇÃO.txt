@@ -1,0 +1,5 @@
+Código reutilizado ou copiado de fontes externas
+
+criar_menus -> projeto antigo meu pra criar menu
+linkzin	    -> projeto mais recente pra linkar paths
+spritesheet -> código copiado/roubadoda internet. Manipula fitas de sprites(spritesheets) 

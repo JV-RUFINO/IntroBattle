@@ -1,0 +1,88 @@
+[{
+    "C":{ 
+        "ATAQUE"    : 2 ,
+        "DEFESA"    : 2 ,
+        "VELOCIDADE": 2 , 
+        "CARGA"     : 2 ,
+        "VIDA"      : 2
+    },
+    "P":{
+        "VIDA"      : 4 ,
+        "ATAQUE"    : 2 ,
+        "DEFESA"    : 4 ,
+        "VELOCIDADE": 0 , 
+        "CARGA"     : 0 
+    },
+    "L":{
+        "VIDA"      : 0 ,
+        "ATAQUE"    : 4 ,
+        "DEFESA"    : 3 ,
+        "VELOCIDADE": 3 , 
+        "CARGA"     : 0 
+    },
+    "S":{
+        "VIDA"      : 1 ,
+        "ATAQUE"    : 0 ,
+        "DEFESA"    : 1 ,
+        "VELOCIDADE": 4 , 
+        "CARGA"     : 4 
+    },
+    "M":{
+        "VIDA"      : 3 ,
+        "ATAQUE"    : 3 ,
+        "DEFESA"    : 0 ,
+        "VELOCIDADE": 1 , 
+        "CARGA"     : 3 
+    }
+},
+{
+    "E":{
+        "VIDA"      : 1 ,
+        "ATAQUE"    : 1 ,
+        "DEFESA"    : 0 ,
+        "VELOCIDADE": 1 , 
+        "CARGA"     : 0 
+    },
+    "L-arqueiros":{
+        "VIDA"      : 0 ,
+        "ATAQUE"    : 2 ,
+        "DEFESA"    : 0 ,
+        "VELOCIDADE": 3 , 
+        "CARGA"     : 0 
+    },
+    "L-brutos":{
+        "VIDA"      : 3 ,
+        "ATAQUE"    : 2 ,
+        "DEFESA"    : 0 ,
+        "VELOCIDADE": 0 , 
+        "CARGA"     : 0 
+    },
+    "L-espadachins":{
+        "VIDA"      : 1 ,
+        "ATAQUE"    : 3 ,
+        "DEFESA"    : 0 ,
+        "VELOCIDADE": 1 , 
+        "CARGA"     : 0 
+    },
+    "L-lanceiros":{
+        "VIDA"      : 2 ,
+        "ATAQUE"    : 1 ,
+        "DEFESA"    : 0 ,
+        "VELOCIDADE": 2 , 
+        "CARGA"     : 0 
+    },
+    "L-soldados":{
+        "VIDA"      : 3 ,
+        "ATAQUE"    : 1 ,
+        "DEFESA"    : 0 ,
+        "VELOCIDADE": 1 , 
+        "CARGA"     : 0 
+    },
+    "B":{
+        "VIDA"      : 4 ,
+        "ATAQUE"    : 4 ,
+        "DEFESA"    : 4 ,
+        "VELOCIDADE": 4 , 
+        "CARGA"     : 4 
+    }
+}]

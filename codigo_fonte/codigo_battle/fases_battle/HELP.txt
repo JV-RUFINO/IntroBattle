@@ -1,0 +1,6 @@
+ABRIGAM AS FASES USADAS NO JOGO
+
+menu_inicial    -> a 1º fase. Aparece um menu interativo
+seleção_perso   -> a 2º fase. Selecione os aliados que queira jogar
+contra_inimigos -> 3º fase. Coloque os seus aliados pre-selecionados e ponha para  lutar contra inimigos
+conclusao	-> 4º fase. Derrota/Vitoria

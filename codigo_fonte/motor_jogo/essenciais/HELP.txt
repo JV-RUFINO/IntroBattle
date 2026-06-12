@@ -1,0 +1,5 @@
+INFRAESTRUTURA USADA PARA AS OUTRAS PASTAS
+
+etiquetas   -> varios enumeradores(biblioteca Enum) pra facilitar a identificação de elementos
+projetil    -> cria uma imagem horizontal/vertical de um projetil
+caixa_texto -> cria uma caixa de texto.
