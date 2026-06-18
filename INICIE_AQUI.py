@@ -14,7 +14,6 @@ from pygame.display     import set_mode as definir_janela   , set_caption   as d
 from pygame.image       import load
 
 from os                 import getcwd
-import json
 
 '=== CÓDIGO REAL ==='
 
