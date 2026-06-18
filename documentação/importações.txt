@@ -1,0 +1,13 @@
+ESSE É O RESULTADO DA FUNÇÃO 'PIP LIST':
+
+Package           Version
+----------------- -------
+pip               21.1.1
+pygame            2.6.1
+pygame-menu       4.5.2
+pyperclip         1.11.0
+setuptools        56.0.0
+typing-extensions 4.13.2
+
+UPDATE: pip foi atualizado
+Version: 25.0.1
