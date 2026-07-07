@@ -28,6 +28,7 @@ class Animacao:
         
         _.aliado     = aliado
         _.inimigo    = inimigo
+        
         _.alvo       = alvo
         _.dano       = str( dano )
 
@@ -75,6 +76,9 @@ class Animacao:
                 _.fonte(tamanho = 32).render( texto , 
                             True , cor , (0 ,0 ,0)) , 
                             Retangulo( posicoes[0] + 50 , posicoes[1] + 220 , 0 , 0 ))
+
+    def __bool__( _ ):
+        return _.running
 
     def __call__( _ , screen : Superficie , nome_ataque: str , posicoes: tuple , boss: bool = False) -> None:
         if _.running:
@@ -169,7 +173,7 @@ if __name__ == "__main__":
     # Example file showing a basic pygame "game loop"
     import pygame
     from aliados            import Maga 
-    from inimigos           import Esqueleto
+    from inimigos           import Esqueleto , Lady_Medusa
     from battle_exterior    import Linkzin
 
     # pygame setup
@@ -181,12 +185,12 @@ if __name__ == "__main__":
     clock = pygame.time.Clock()
     running = True
 
-    personagens = ( Maga() , Esqueleto() )
+    personagens = ( Maga() , Lady_Medusa() )
     anim = Anim_AtkBasico(*personagens, personagens[1] )
 
-    print(anim.aliado)
+    '''print(anim.aliado)
     print(anim.inimigo)
-    print([ anim.inimigo , anim.aliado ][anim.alvo])
+    print([ anim.inimigo , anim.aliado ][anim.alvo])'''
 
     while running:
         # poll for events

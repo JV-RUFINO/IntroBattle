@@ -54,7 +54,7 @@ class Fluxo_Jogo:
         _.screen : Superficie = screen
         _.rodando_jogo : bool = True
         
-        _.lista_acoes_aliadas = [] # armazen das acoes que os aliados vão fazer
+        _.lista_acoes_aliadas = [[],[]] # armazen das acoes que os aliados vão fazer
         
         _.batalha = Criar_Batalha( tuple() , tuple() )
         _.CMI = Criar_Menu_inicial( _.screen )
@@ -103,7 +103,8 @@ class Fluxo_Jogo:
 
                 resultado : Event = fase( _ )
 
-                _.lista_acoes_aliadas.clear() # só para garantir
+                _.lista_acoes_aliadas[0].clear() # só para garantir
+                _.lista_acoes_aliadas[1].clear() # só para garantir
 
                 return resultado
 
@@ -125,17 +126,13 @@ class Fluxo_Jogo:
         opcoes  = Printar_Opções(Cor(100,100,175),("1",'2','3','4','5'), Retangulo(50,100,*PSP.tamanho_estrutura()),250)
         psp     = PSP()
         aliados_escolhidos = []
+        PAUSA   = True
 
-        fase : Event = Pausa_Personagens( _.screen, [ 
-                    opcoes  ,
-                    psp , 
-                    aliados_escolhidos ])
-
-        if all([a.type != SAIR_X for a in fase]):
-            fase : Event = Selecionar_Personagens(_.screen, [ 
-                    opcoes  ,
-                    psp , 
-                    aliados_escolhidos ])
+        fase : Event = Selecionar_Personagens(_.screen, [ 
+                opcoes  ,
+                psp , 
+                aliados_escolhidos ,
+                PAUSA])
 
         _.aliados_escolhidos = tuple(aliados_escolhidos)
 
@@ -241,6 +238,5 @@ if __name__ == "__main__":
     fluxo = Fluxo_Jogo(screen)
 
     fluxo()
-    
 
     pygame.quit()

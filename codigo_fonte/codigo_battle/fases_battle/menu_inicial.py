@@ -6,7 +6,7 @@ parente , raiz = arquivo.parent, arquivo.parents[1]
 caminho.append(str(raiz))
 
 # CRIADORES -- BATALHA
-from criadores_batalha.criar_fase import Criar_Fase
+from criadores_batalha.criar_fase import Criar_Fase , Fase_Componentes
 
 # CODIGO ANTIGO MEU COPIADO
 from battle_exterior import Menu_Conjunto
@@ -62,14 +62,12 @@ class Criar_Menu_inicial(Menu_Conjunto):
                     })
 
 
-@Criar_Fase(Criar_Fase.caminho_comum(),'salão.png')
+@Criar_Fase( 'salão' )
 def Menu_Inicial(
             screen :Superficie, 
                 info_extra = None,
-                    eventos:list = None):
-    for event in eventos:
-        if event.type == SAIR_X: # pygame.QUIT
-            return False
+                    index : Fase_Componentes = None,
+                        eventos:list = None):
 
     Menu: Criar_Menu_inicial = info_extra # só pra facilitar o entendimento
 

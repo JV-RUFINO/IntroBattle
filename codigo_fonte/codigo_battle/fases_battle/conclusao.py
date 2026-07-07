@@ -12,7 +12,7 @@ from battle_exterior import Caixa_Texto
 
 
 # CELEBRO -- CRIADORES
-from criadores_batalha.criar_fase       import Criar_Fase
+from criadores_batalha.criar_fase       import Criar_Fase , Fase_Componentes 
 from criadores_batalha.criar_opcoes     import Printar_Opções
 
 # PERSONAGENS
@@ -70,97 +70,65 @@ def printar_perso_conclu( screen : Superficie ,perso : list , vitoria: bool ):
 
         posicao[0] += aumento
 
-@Criar_Fase(Criar_Fase.caminho_comum(),'teste 7.png')
+@Criar_Fase( 'teste 7' )
 def Conclusao(
-            screen :Superficie, 
-                info_extra = None,
-                    eventos:list = None
-                ):
+        screen :Superficie, 
+            info_extra = None,
+                index : Fase_Componentes = None,
+                    eventos:list = None):
 
     aliados     : tuple = info_extra[0] # ( Personagem , Personagem , Personagem )
     vitoria     : bool  = info_extra[1]
     dificuldade : int   = info_extra[2] # 0 / 1 / 2
 
-    for event in eventos:
-        event : Event
-
-        if event.type == SAIR_X: # pygame.QUIT
-            return False
-
-        if event.type == TECLA_APERTADA and event.key == ENTER:  # pygame.KEY_UP / pygame.RETURN
-            if vitoria:
-                Julgamento( screen , Lady_Medusa().julgamento_final(dificuldade) )
-
-            return False
-
-    conclu = decidir_conclusao( vitoria , dificuldade )
-
-    # ESCREVER EM CIMA 
-    screen.blit( conclu[1][0] , conclu[1][1] ) # texto da caixa
-    # ESCREVER EM CIMA 
-
-    # PRINTAR O BOTÃO NA TELA 
-    voltar_opcao = conclu[0] # Printar_Opções(cor_geral=(int,int,int),opcoes = (str), _Printar_Opções__CONTAGEM=0)
-    voltar_opcao(screen)
-    # PRINTAR O BOTÃO NA TELA 
-
-    # MOSTRAR OS COMBATENTES VENCEDORES
-    if dificuldade < 2 and vitoria:
-        perso = [Lady_Medusa()]
+    if type(index.CT) == Caixa_Texto:
+        return False
     else:
-        perso = aliados 
+        for event in eventos:
+            event : Event
 
-    printar_perso_conclu( screen ,perso , vitoria )
-    # MOSTRAR OS COMBATENTES VENCEDORES
-    
-    return True
+            if event.type == TECLA_APERTADA:
+                if event.key == ENTER:
+                    index.CT = Lady_Medusa().julgamento_final( dificuldade )
+
+                    index[1]
+
+        conclu = decidir_conclusao( vitoria , dificuldade )
+
+        # ESCREVER EM CIMA 
+        screen.blit( conclu[1][0] , conclu[1][1] ) # texto da caixa
+        # ESCREVER EM CIMA 
+
+        # PRINTAR O BOTÃO NA TELA 
+        voltar_opcao = conclu[0] # Printar_Opções(cor_geral=(int,int,int),opcoes = (str), _Printar_Opções__CONTAGEM=0)
+        voltar_opcao(screen)
+        # PRINTAR O BOTÃO NA TELA 
+
+        # MOSTRAR OS COMBATENTES VENCEDORES
+        if dificuldade < 2 and vitoria:
+            perso = [Lady_Medusa()]
+        else:
+            perso = aliados 
+
+        printar_perso_conclu( screen ,perso , vitoria )
+        # MOSTRAR OS COMBATENTES VENCEDORES
+        
+        return True
 
 
-
-@Criar_Fase(Criar_Fase.caminho_comum(),'teste 7.png')
+@Conclusao.Fase_Caixa_Texto( 'teste 7' )
 def Julgamento(
             screen :Superficie, 
                 info_extra = None,
-                    eventos:list = None):
+                    index : Fase_Componentes = None,
+                        eventos:list = None):
 
-    CC : Caixa_Texto = info_extra
+    CT : Caixa_Texto = index.CT
 
-    for event in eventos:
-        event : Event
-
-        if event.type == SAIR_X: # pygame.QUIT
-            return False
-
-        if event.type == TECLA_SEGURADA:
-            if event.key == DIREITA:
-                CC.alt[2] = True
-                
-            if event.key == ESQUERDA:
-                CC.alt[1] = True
-            
-            if event.key == ENTER:
-                CC.alt[0] = True
-
-        if event.type == TECLA_APERTADA:
-            if event.key == DIREITA:
-                CC.index += 1
-                
-            if event.key == ESQUERDA:
-                CC.index -= 1
-
-            if event.key == ENTER:
-                CC.rodando = False
-                
-            CC.resetar_cores()
+    printar_perso_conclu( screen , [Lady_Medusa()] , True)
     
+    return CT.rodando
     
-    if CC.rodando:
-        CC( screen )
-
-        printar_perso_conclu( screen , [Lady_Medusa()] , True)
-    
-    return CC.rodando
-
 
 '=== TESTE ==='
 

@@ -165,6 +165,8 @@ class Caixa_Texto:
     def resetar_cores( _ ):
         _.alt = [False,False,False]
 
+    def __bool__( _ ):
+        return _.rodando    
         
     def __call__( _ , screen: Superficie) -> None:
         if _.rodando:    
@@ -220,7 +222,7 @@ if __name__ == "__main__":
     screen = definir_janela((1280, 720))
     definir_titulo("IntroBattle")
 
-
+    print(bool(caixa_texto))
     '''caixa_texto = Caixa_Texto(
         frase ={"1":[  Caixa_Texto.fonte().render("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",False,(0, 255, 0)),
                             Caixa_Texto.fonte().render("A A A A A A A AAAAAAAAAAAAAAAAAAAA",False,(0, 255, 0))],

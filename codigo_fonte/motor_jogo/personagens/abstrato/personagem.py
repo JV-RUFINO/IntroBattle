@@ -113,7 +113,7 @@ class Personagem(ABC):
     def reducao_dano( _ , dano_recebido : int) -> int: # aplicando DEFESA sobre o dano recebido
         dano_real = dano_recebido - int(_.DEFESA)
 
-        if dano_real <= 1:
+        if dano_real < 1:
             dano_real = 1 # dano nunca menor que 0
 
         return dano_real
@@ -161,7 +161,7 @@ class Personagem(ABC):
 
             _.vida -= _.reducao_dano( valor ) # reduzindo o dano conforme a DEFESA
 
-            if _.vida <= 0:
+            if _.vida < 0:
                 _.vida = 0
 
         elif type(valor) in [type(_.STATUS[status]) for status in _.STATUS]:
