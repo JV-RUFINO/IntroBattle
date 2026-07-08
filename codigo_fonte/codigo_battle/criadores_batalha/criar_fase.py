@@ -71,7 +71,7 @@ class Fase_Componentes:
         _.todas_fases       = [ fase_principal ]
         _.todos_backgrounds = [ background_principal ]
 
-        _.fases_evento    = {}
+        _.fases_evento      = {}
 
     @staticmethod
     def caminho_comum():
