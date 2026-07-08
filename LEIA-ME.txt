@@ -1,0 +1,3 @@
+INTROBATTLE - Criado por JOTAVE
+
+Para começar o jogo, rode "INICIE_AQUI.py"
